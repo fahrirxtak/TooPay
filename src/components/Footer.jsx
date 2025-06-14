@@ -3,8 +3,6 @@
 import { useState, useEffect, useRef } from "react"
 import { gsap } from "gsap"
 import {
-  Github,
-  Linkedin,
   Twitter,
   Instagram,
   Mail,
@@ -85,34 +83,51 @@ const Footer = () => {
     window.scrollTo({ top: 0, behavior: "smooth" })
   }
 
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      const offsetTop = element.offsetTop - 80 // Account for fixed navbar height
+      window.scrollTo({
+        top: offsetTop,
+        behavior: "smooth",
+      })
+    }
+  }
+
   const handleNewsletterSubmit = (e) => {
     e.preventDefault()
     // Handle newsletter subscription
     console.log("Newsletter subscription:", email)
     setEmail("")
+    // You can add actual newsletter subscription logic here
+    alert("Thank you for subscribing to our newsletter!")
+  }
+
+  const handleServiceClick = (serviceName) => {
+    // Navigate to services section and highlight the specific service
+    scrollToSection("services")
+    console.log(`Clicked on service: ${serviceName}`)
   }
 
   const currentYear = new Date().getFullYear()
 
   const services = [
-    { name: "Web Development", icon: Code },
-    { name: "UI/UX Design", icon: Palette },
-    { name: "Mobile Apps", icon: Smartphone },
-    { name: "Website Maintenance", icon: Globe },
+    { name: "Web Development", icon: Code, id: "web-development" },
+    { name: "UI/UX Design", icon: Palette, id: "ui-ux-design" },
+    { name: "Mobile Apps", icon: Smartphone, id: "mobile-apps" },
+    { name: "Website Maintenance", icon: Globe, id: "website-maintenance" },
   ]
 
   const quickLinks = [
-    { name: "Beranda", href: "#home" },
-    { name: "Tentang", href: "#about" },
-    { name: "Portfolio", href: "#portfolio" },
-    { name: "FAQ", href: "#faq" },
+    { name: "Beranda", href: "home" },
+    { name: "Tentang", href: "about" },
+    { name: "Portfolio", href: "portfolio" },
+    { name: "FAQ", href: "faq" },
   ]
 
   const socialLinks = [
-    { name: "GitHub", icon: Github, href: "#", color: "hover:text-gray-400" },
-    { name: "LinkedIn", icon: Linkedin, href: "#", color: "hover:text-blue-400" },
-    { name: "Twitter", icon: Twitter, href: "#", color: "hover:text-sky-400" },
-    { name: "Instagram", icon: Instagram, href: "#", color: "hover:text-pink-400" },
+    { name: "Twitter", icon: Twitter, href: "https://twitter.com", color: "hover:text-sky-400" },
+    { name: "Instagram", icon: Instagram, href: "https://www.instagram.com/toopay.web/", color: "hover:text-pink-400" },
   ]
 
   return (
@@ -339,11 +354,14 @@ const Footer = () => {
           {/* Brand Section */}
           <div className="lg:col-span-1">
             <div className="mb-6">
-              <h3 className="text-2xl font-bold text-neutral-900 dark:text-white mb-4">
+              <button
+                onClick={() => scrollToSection("home")}
+                className="text-2xl font-bold text-neutral-900 dark:text-white mb-4 hover:scale-105 transition-transform duration-300"
+              >
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-500 to-orange-500">
                   TooPay
                 </span>
-              </h3>
+              </button>
               <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">
                 Menciptakan solusi digital yang inovatif dan berkualitas tinggi untuk membantu bisnis Anda berkembang di
                 era digital.
@@ -354,12 +372,25 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3 text-neutral-600 dark:text-neutral-400">
                 <Mail className="w-4 h-4 text-amber-500" />
-                <span className="text-sm">tooopayy@gmail.com</span>
+                <a
+                  href="mailto:tooopayy@gmail.com"
+                  className="text-sm hover:text-amber-500 transition-colors duration-300"
+                >
+                  tooopayy@gmail.com
+                </a>
               </div>
               <div className="flex items-center space-x-3 text-neutral-600 dark:text-neutral-400">
                 <Phone className="w-4 h-4 text-amber-500" />
-                <span className="text-sm">+62 812-3456-7890</span>
+                <a
+                  href="https://wa.me/6285759288760"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm hover:text-amber-500 transition-colors duration-300"
+                >
+                  +62 857-5928-8760
+                </a>
               </div>
+
               <div className="flex items-center space-x-3 text-neutral-600 dark:text-neutral-400">
                 <MapPin className="w-4 h-4 text-amber-500" />
                 <span className="text-sm">Kota Bandung, Indonesia</span>
@@ -375,13 +406,13 @@ const Footer = () => {
                 const Icon = service.icon
                 return (
                   <li key={index}>
-                    <a
-                      href="#"
-                      className="group flex items-center space-x-3 text-neutral-600 dark:text-neutral-400 hover:text-amber-500 dark:hover:text-amber-400 transition-colors duration-300"
+                    <button
+                      onClick={() => handleServiceClick(service.name)}
+                      className="group flex items-center space-x-3 text-neutral-600 dark:text-neutral-400 hover:text-amber-500 dark:hover:text-amber-400 transition-colors duration-300 w-full text-left"
                     >
                       <Icon className="w-4 h-4 group-hover:scale-110 transition-transform duration-300" />
                       <span className="text-sm">{service.name}</span>
-                    </a>
+                    </button>
                   </li>
                 )
               })}
@@ -394,13 +425,13 @@ const Footer = () => {
             <ul className="space-y-4">
               {quickLinks.map((link, index) => (
                 <li key={index}>
-                  <a
-                    href={link.href}
-                    className="group flex items-center space-x-2 text-neutral-600 dark:text-neutral-400 hover:text-amber-500 dark:hover:text-amber-400 transition-colors duration-300"
+                  <button
+                    onClick={() => scrollToSection(link.href)}
+                    className="group flex items-center space-x-2 text-neutral-600 dark:text-neutral-400 hover:text-amber-500 dark:hover:text-amber-400 transition-colors duration-300 w-full text-left"
                   >
                     <span className="text-sm">{link.name}</span>
                     <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" />
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -444,6 +475,8 @@ const Footer = () => {
                   <a
                     key={index}
                     href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={`group p-3 bg-white/10 dark:bg-white/5 border border-white/20 rounded-xl text-neutral-600 dark:text-neutral-400 ${social.color} transition-all duration-300 hover:scale-110 hover:shadow-lg`}
                     aria-label={social.name}
                   >

@@ -3,12 +3,24 @@ import { gsap } from "gsap"
 import { ArrowRight, Sparkles, Zap, Play, Star, Phone } from "lucide-react"
 
 const Hero = () => {
+
   const withoutLimitsRef = useRef(null)
   const designRef = useRef(null)
   const paragraphRef = useRef(null)
   const containerRef = useRef(null)
   const particlesRef = useRef(null)
   const ctaButtonsRef = useRef(null)
+
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      const offsetTop = element.offsetTop - 80 // Account for fixed navbar height
+      window.scrollTo({
+        top: offsetTop,
+        behavior: "smooth",
+      })
+    }
+  }
 
   useEffect(() => {
     // Create particles
@@ -488,7 +500,7 @@ const Hero = () => {
   }, [])
 
   return (
-    <div className="isolate min-h-screen overflow-hidden" ref={containerRef}>
+    <div className="isolate min-h-screen overflow-hidden" id="home" ref={containerRef}>
       {/* Enhanced background with multiple layers */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-0 -left-1/4 w-1/2 h-1/2 bg-amber-400 dark:bg-amber-500 rounded-full blur-3xl opacity-20 animate-pulse"></div>
@@ -553,14 +565,23 @@ const Hero = () => {
 
           {/* CTA Buttons */}
           <div ref={ctaButtonsRef} className="flex flex-col sm:flex-row gap-4 pt-6">
-            <button className="group inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white bg-gradient-to-r from-amber-500 to-orange-500 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 hover:from-amber-600 hover:to-orange-600">
+            <button
+              onClick={() => scrollToSection("portfolio")}
+              className="group inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white bg-gradient-to-r from-amber-500 to-orange-500 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 hover:from-amber-600 hover:to-orange-600"
+            >
               Lihat Portofolio
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
-            <button className="group inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-neutral-900 dark:text-white bg-white/10 backdrop-blur-sm border border-neutral-200 dark:border-neutral-700 rounded-2xl hover:bg-white/20 transition-all duration-300">
+            <a
+              href="https://wa.me/6285759288760?text=Halo%2C%20saya%20ingin%20bertanya%20tentang%20layanan%20Anda"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-neutral-900 dark:text-white bg-white/10 backdrop-blur-sm border border-neutral-200 dark:border-neutral-700 rounded-2xl hover:bg-white/20 transition-all duration-300"
+            >
               <Phone className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
               Hubungi Kami
-            </button>
+            </a>
+
           </div>
 
           {/* Trust Indicators */}

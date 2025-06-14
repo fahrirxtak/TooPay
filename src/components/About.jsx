@@ -489,7 +489,7 @@ const About = () => {
   ]
 
   return (
-    <section ref={sectionRef} className="py-20 md:py-24 lg:py-32 relative overflow-hidden">
+    <section id="about" ref={sectionRef} className="py-20 md:py-24 lg:py-32 relative overflow-hidden">
       {/* Enhanced Grid Background */}
       <GridPattern />
 
@@ -619,14 +619,6 @@ const About = () => {
                 {whyChooseToopay.map((item, index) => (
                   <FeatureCard key={index} item={item} index={index} />
                 ))}
-              </div>
-
-              {/* CTA Button */}
-              <div ref={ctaRef} className="pt-6">
-                <button className="group inline-flex items-center px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold rounded-2xl shadow-lg shadow-amber-500/25 hover:shadow-xl hover:shadow-amber-500/40 transition-all duration-300 hover:scale-105 hover:-translate-y-1">
-                  <span>Mulai Proyek Anda</span>
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-                </button>
               </div>
             </div>
 

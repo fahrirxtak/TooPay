@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { ExternalLink, ShoppingCart, Smartphone, BarChart3, Palette, Globe, ArrowRight } from "lucide-react"
+import { ExternalLink, Trash2, CreditCard, HeartHandshake, Palette, BookOpenCheck, ArrowRight } from "lucide-react"
 
 // Register ScrollTrigger plugin
 if (typeof window !== "undefined") {
@@ -80,44 +80,46 @@ const Portfolio = () => {
   const portfolioItems = [
     {
       id: 1,
-      title: "Toko Online Fashion",
+      title: "Pengelolaan Sampah Rumah Tangga",
       description:
-        "Platform e-commerce modern untuk brand fashion dengan sistem pembayaran yang aman, katalog produk yang menarik, dan dashboard admin yang user-friendly.",
+        "Aplikasi web interaktif untuk mengelola sampah rumah tangga secara efisien. Fitur termasuk pelaporan jadwal pengangkutan, edukasi daur ulang, dan kalkulator untuk menghitung sampah.",
       image: "/images/portofolio-1.png",
-      icon: ShoppingCart,
+      icon: Trash2,
       live: "https://example.com",
       category: "Web Development",
     },
     {
       id: 2,
-      title: "Aplikasi Banking Digital",
+      title: "Dashboard Kasir",
       description:
-        "Solusi perbankan digital dengan interface yang intuitif untuk transfer, cek saldo, pembayaran tagihan, dan investasi dengan sistem keamanan berlapis.",
-      image: "/placeholder.svg?height=400&width=600",
-      icon: Smartphone,
+        "Sistem dashboard kasir modern untuk mencatat transaksi penjualan, mengelola produk, memantau stok, dan menghasilkan laporan keuangan secara real-time.",
+      image: "/images/portofolio-2.png",
+      icon: CreditCard,
       live: "https://example.com",
       category: "Web Development",
     },
     {
       id: 3,
-      title: "Dashboard Analytics",
+      title: "Bridge Of Hope",
       description:
-        "Platform analytics untuk monitoring performa bisnis dengan visualisasi data yang mudah dipahami, forecasting, dan automated reporting.",
-      image: "/placeholder.svg?height=400&width=600",
-      icon: BarChart3,
+        "Website donasi yang menghubungkan para dermawan dengan individu dan komunitas yang membutuhkan, dilengkapi dengan sistem pelacakan transparan dan laporan distribusi bantuan secara real-time.",
+      image: "/images/portofolio-3.png",
+      icon: HeartHandshake, // rekomendasi icon
       live: "https://example.com",
       category: "Web Development",
     },
+
     {
       id: 4,
-      title: "Website Company Profile",
+      title: "Website Buku Digital",
       description:
-        "Website corporate yang elegan dan profesional untuk meningkatkan brand image dengan SEO optimization dan loading speed yang optimal.",
-      image: "/placeholder.svg?height=400&width=600",
-      icon: Globe,
+        "Platform digital untuk membaca dan menjual buku secara online, lengkap dengan sistem kategori, pencarian cerdas, ulasan pembaca, dan fitur pembelian yang mudah.",
+      image: "/images/portofolio-4.png",
+      icon: BookOpenCheck, // rekomendasi ikon
       live: "https://example.com",
       category: "Web Development",
     },
+
   ]
 
   const ProjectCard = ({ project, index, isReversed }) => (
@@ -190,7 +192,7 @@ const Portfolio = () => {
   )
 
   return (
-    <section ref={sectionRef} className="py-20 md:py-24 lg:py-32 relative overflow-hidden">
+    <section id="portfolio" ref={sectionRef} className="py-20 md:py-24 lg:py-32 relative overflow-hidden">
       {/* Enhanced Background with Box Patterns */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Main Grid Pattern */}

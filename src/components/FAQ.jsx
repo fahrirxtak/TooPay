@@ -90,7 +90,7 @@ const FAQ = () => {
     {
       question: "Teknologi apa saja yang Anda gunakan?",
       answer:
-        "Saya menggunakan teknologi modern seperti React, Next.js, Node.js, TypeScript, Tailwind CSS, dan database seperti MongoDB atau PostgreSQL. Pemilihan teknologi akan disesuaikan dengan kebutuhan spesifik proyek Anda untuk memastikan performa dan skalabilitas yang optimal.",
+        "Saya menggunakan teknologi modern seperti Laravel, React, Vue, Tailwind CSS, dan database seperti MySQL atau PostgreSQL. Pemilihan teknologi akan disesuaikan dengan kebutuhan spesifik proyek Anda untuk memastikan performa dan skalabilitas yang optimal.",
     },
     {
       question: "Apakah website yang dibuat sudah responsive dan mobile-friendly?",
@@ -105,7 +105,7 @@ const FAQ = () => {
   ]
 
   return (
-    <section ref={sectionRef} id="faq" className="py-20 md:py-24 lg:py-32 relative overflow-hidden">
+    <section ref={sectionRef} id="contact" className="py-20 md:py-24 lg:py-32 relative overflow-hidden">
       {/* Enhanced Background with Box Patterns */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Main Grid Pattern */}
@@ -281,30 +281,26 @@ const FAQ = () => {
                 <button
                   key={index}
                   onClick={() => setSelectedQuestion(index)}
-                  className={`w-full text-left p-4 rounded-xl transition-all duration-300 group ${
-                    selectedQuestion === index
+                  className={`w-full text-left p-4 rounded-xl transition-all duration-300 group ${selectedQuestion === index
                       ? "bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-500/30 shadow-lg"
                       : "bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20"
-                  }`}
+                    }`}
                 >
                   <div className="flex items-center space-x-3">
                     <div
-                      className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
-                        selectedQuestion === index
+                      className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 transition-all duration-300 ${selectedQuestion === index
                           ? "bg-gradient-to-r from-amber-500 to-orange-500 shadow-lg"
                           : "bg-white/10 group-hover:bg-white/20"
-                      }`}
+                        }`}
                     >
                       <HelpCircle
-                        className={`w-4 h-4 ${
-                          selectedQuestion === index ? "text-white" : "text-neutral-400 group-hover:text-neutral-300"
-                        }`}
+                        className={`w-4 h-4 ${selectedQuestion === index ? "text-white" : "text-neutral-400 group-hover:text-neutral-300"
+                          }`}
                       />
                     </div>
                     <span
-                      className={`text-sm font-medium leading-tight ${
-                        selectedQuestion === index ? "text-amber-400" : "text-neutral-300 group-hover:text-white"
-                      }`}
+                      className={`text-sm font-medium leading-tight ${selectedQuestion === index ? "text-amber-400" : "text-neutral-300 group-hover:text-white"
+                        }`}
                     >
                       {item.question}
                     </span>
@@ -452,7 +448,12 @@ const FAQ = () => {
               </p>
 
               {/* Enhanced button with multiple effects */}
-              <button className="group/btn relative inline-flex items-center px-10 py-5 bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 text-white font-semibold rounded-2xl shadow-lg shadow-amber-500/25 hover:shadow-2xl hover:shadow-amber-500/50 transition-all duration-500 hover:scale-110 hover:-translate-y-2 text-lg overflow-hidden transform-gpu">
+              <a
+                href="https://wa.me/6285759288760?text=Halo%20saya%20ingin%20bertanya%20tentang%20TooPay"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group/btn relative inline-flex items-center px-10 py-5 bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 text-white font-semibold rounded-2xl shadow-lg shadow-amber-500/25 hover:shadow-2xl hover:shadow-amber-500/50 transition-all duration-500 hover:scale-110 hover:-translate-y-2 text-lg overflow-hidden transform-gpu"
+              >
                 {/* Enhanced button background effects */}
                 <div className="absolute inset-0 bg-gradient-to-r from-amber-600 via-orange-600 to-red-600 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
 
@@ -482,7 +483,8 @@ const FAQ = () => {
                 >
                   <Star className="w-3 h-3 text-white animate-pulse" />
                 </div>
-              </button>
+              </a>
+
 
               {/* Additional micro-interactions */}
               <div className="mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-y-2 group-hover:translate-y-0">
